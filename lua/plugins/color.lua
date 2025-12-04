@@ -1,8 +1,3 @@
-local function enable_transparency()
-    vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-end
-
 return {
     {
         "sainnhe/gruvbox-material",
@@ -11,7 +6,6 @@ return {
             vim.g.gruvbox_material_background = "medium"
             vim.cmd.colorscheme("gruvbox-material")
 
-            enable_transparency()
 
             vim.api.nvim_set_hl(0, "@function", { fg = "#FFD700", bold = true })
             vim.api.nvim_set_hl(0, "@keyword",  { fg = "#FF5733", italic = true })
