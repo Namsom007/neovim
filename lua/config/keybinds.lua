@@ -1,7 +1,9 @@
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>cd", vim.cmd.Ex)
+-- jk -> ESC
+vim.keymap.set("i", "jj", "<Esc>", { noremap = true, silent = true })
 
-
+ 
 vim.keymap.set('n', '<leader>c', '<Cmd>BufferClose<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>n', '<Cmd>BufferNext<CR>',  { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>p', '<Cmd>BufferPrevious<CR>',  { noremap = true, silent = true })
