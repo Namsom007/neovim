@@ -1,40 +1,33 @@
 return {
     {
-        "sainnhe/gruvbox-material",
+        "folke/tokyonight.nvim",
         priority = 1000,
         config = function()
-            vim.g.gruvbox_material_background = "medium"
-            vim.g.gruvbox_material_transparent_background = 1
+            require("tokyonight").setup({
+                style = "night", -- ตัวเลือก: storm, moon, night, day
+                transparent = false, -- ปิดการโปร่งแสง
+                terminal_colors = true,
+                styles = {
+                    comments = { italic = true },
+                    keywords = { italic = true },
+                    functions = {},
+                    variables = {},
+                    sidebars = "dark",
+                    floats = "dark",
+                },
+            })
             
-            vim.cmd.colorscheme("gruvbox-material")
+            vim.cmd.colorscheme("tokyonight")
             
-            -- ตั้งค่า highlight groups ให้โปร่งแสง
-            local transparent_groups = {
-                "Normal",
-                "NormalFloat",
-                "NormalNC",        -- เพิ่มสำหรับ window ที่ไม่ focus
-                "SignColumn",
-                "EndOfBuffer",
-                "LineNr",
-                "CursorLineNr",
-                "Folded",          -- เพิ่มสำหรับ folded text
-                "FoldColumn",      -- เพิ่มสำหรับ fold column
-            }
-            
-            for _, group in ipairs(transparent_groups) do
-                vim.api.nvim_set_hl(0, group, { bg = "none" })
-            end
-            
-            -- Custom syntax highlighting
-            vim.api.nvim_set_hl(0, "@function", { fg = "#FFD700", bold = true })
-            vim.api.nvim_set_hl(0, "@keyword",  { fg = "#FF5733", italic = true })
-            vim.api.nvim_set_hl(0, "@string",   { fg = "#98C379" })
-            vim.api.nvim_set_hl(0, "@comment",  { fg = "#808080", italic = true })
+            -- ถ้าต้องการปิดการโปร่งแสงให้แน่ใจ ให้ตั้งค่า background
+            vim.api.nvim_set_hl(0, "Normal", { bg = "#1a1b26" })
+            vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#1a1b26" })
+            vim.api.nvim_set_hl(0, "NormalNC", { bg = "#1a1b26" })
         end
     },
     {
         "nvim-lualine/lualine.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },
-        opts = { theme = "gruvbox-material" }
+        opts = { theme = "tokyonight" }
     },
 }
